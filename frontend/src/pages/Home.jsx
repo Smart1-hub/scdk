@@ -1,106 +1,348 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
+import {
+  ArrowRight,
+  Building2,
+  Globe2,
+  Map,
+  RadioTower,
+  Route,
+} from "lucide-react";
+
+import PageLayout from "../components/ui/PageLayout";
+import GlassCard from "../components/ui/GlassCard";
+import AnimatedContainer from "../components/ui/AnimatedContainer";
+import SectionTitle from "../components/ui/SectionTitle";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
 export default function Home() {
 
+  const services = [
+    {
+      icon: <Map size={35} />,
+      title: "GIS & Spatial Intelligence",
+    },
+
+    {
+      icon: <Building2 size={35} />,
+      title: "Urban Planning",
+    },
+
+    {
+      icon: <Route size={35} />,
+      title: "Transportation Systems",
+    },
+
+    {
+      icon: <RadioTower size={35} />,
+      title: "Smart City & IoT",
+    },
+  ];
+
   return (
 
-    <div className="min-h-screen bg-slate-950 text-white">
-
-      <Navbar />
+    <PageLayout>
 
       {/* HERO */}
       <section className="px-10 py-32">
 
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* LEFT */}
+          <AnimatedContainer>
+
+            <p className="uppercase tracking-[0.3em] text-cyan-400">
+
+              Enterprise Smart City Platform
+
+            </p>
+
+            <h1 className="text-7xl font-extrabold leading-tight mt-8">
+
+              Building
+              <span className="text-cyan-400">
+                {" "}Intelligent Cities{" "}
+              </span>
+
+              Through GIS,
+              Analytics &
+              Smart Infrastructure
+
+            </h1>
+
+            <p className="text-slate-400 text-xl leading-relaxed mt-10 max-w-2xl">
+
+              SCD KONSULT delivers enterprise GIS,
+              transportation intelligence,
+              environmental systems,
+              urban analytics,
+              IoT infrastructure,
+              and smart-city innovation.
+
+            </p>
+
+            <div className="flex flex-wrap gap-6 mt-12">
+
+              <Link to="/services">
+
+                <PrimaryButton>
+
+                  Explore Services
+
+                </PrimaryButton>
+
+              </Link>
+
+              <Link to="/portfolio">
+
+                <button
+                  className="
+                    border
+                    border-slate-700
+                    px-8
+                    py-4
+                    rounded-2xl
+                    font-bold
+                    hover:border-cyan-400
+                    transition
+                    duration-300
+                  "
+                >
+
+                  View Portfolio
+
+                </button>
+
+              </Link>
+
+            </div>
+
+          </AnimatedContainer>
+
+          {/* RIGHT */}
+          <AnimatedContainer>
+
+            <GlassCard className="relative overflow-hidden">
+
+              <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/20 blur-3xl rounded-full"></div>
+
+              <div className="relative z-10">
+
+                <div className="flex items-center gap-4">
+
+                  <Globe2
+                    size={50}
+                    className="text-cyan-400"
+                  />
+
+                  <div>
+
+                    <h2 className="text-3xl font-bold">
+
+                      Smart City OS
+
+                    </h2>
+
+                    <p className="text-slate-400 mt-2">
+
+                      Enterprise Urban Intelligence
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div className="grid grid-cols-2 gap-6 mt-12">
+
+                  {services.map((service, index) => (
+
+                    <motion.div
+                      key={index}
+                      whileHover={{
+                        scale: 1.05,
+                      }}
+                      className="
+                        bg-slate-950/80
+                        border
+                        border-slate-800
+                        rounded-2xl
+                        p-6
+                      "
+                    >
+
+                      <div className="text-cyan-400">
+
+                        {service.icon}
+
+                      </div>
+
+                      <h3 className="font-bold mt-5">
+
+                        {service.title}
+
+                      </h3>
+
+                    </motion.div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            </GlassCard>
+
+          </AnimatedContainer>
+
+        </div>
+
+      </section>
+
+      {/* FEATURE SECTION */}
+      <section className="px-10 pb-28">
+
         <div className="max-w-7xl mx-auto">
 
-          <p className="text-cyan-400 uppercase tracking-widest">
-            Smart City Development Konsult Ltd
-          </p>
+          <AnimatedContainer>
 
-          <h1 className="text-7xl font-extrabold leading-tight mt-6 max-w-5xl">
-            GIS, Urban Planning &
-            Smart City Solutions
-          </h1>
+            <SectionTitle
+              eyebrow="Capabilities"
+              title="Enterprise Smart City Solutions"
+              description="
+              Delivering next-generation geospatial,
+              urban,
+              environmental,
+              and smart infrastructure systems.
+              "
+              center
+            />
 
-          <p className="text-slate-300 text-xl mt-8 max-w-3xl leading-relaxed">
-            Enterprise geospatial solutions for urban development,
-            infrastructure management, planning intelligence,
-            environmental systems, and smart-city transformation.
-          </p>
+          </AnimatedContainer>
 
-          <div className="flex gap-5 mt-10">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-20">
 
-            <Link
-              to="/services"
-              className="bg-cyan-500 hover:bg-cyan-600 px-8 py-4 rounded-2xl font-bold transition"
-            >
-              Explore Services
-            </Link>
+            {[
 
-            <Link
-              to="/portfolio"
-              className="border border-slate-700 hover:border-cyan-400 px-8 py-4 rounded-2xl font-bold transition"
-            >
-              View Portfolio
-           </Link>
+              {
+                title: "Urban Intelligence",
+                desc:
+                  "Real-time urban analytics and decision-support systems.",
+              },
+
+              {
+                title: "GIS Infrastructure",
+                desc:
+                  "Enterprise geospatial platforms and spatial databases.",
+              },
+
+              {
+                title: "Smart Mobility",
+                desc:
+                  "Transportation analytics and route optimization systems.",
+              },
+
+              {
+                title: "IoT Monitoring",
+                desc:
+                  "Connected sensors and smart infrastructure management.",
+              },
+
+              {
+                title: "Environmental Systems",
+                desc:
+                  "Flood-risk analysis and environmental resilience planning.",
+              },
+
+              {
+                title: "Enterprise Analytics",
+                desc:
+                  "Urban dashboards and infrastructure intelligence systems.",
+              },
+
+            ].map((item, index) => (
+
+              <AnimatedContainer key={index}>
+
+                <GlassCard className="h-full">
+
+                  <h3 className="text-2xl font-bold">
+
+                    {item.title}
+
+                  </h3>
+
+                  <p className="text-slate-400 mt-5 leading-relaxed">
+
+                    {item.desc}
+
+                  </p>
+
+                </GlassCard>
+
+              </AnimatedContainer>
+
+            ))}
 
           </div>
-        
+
         </div>
+
       </section>
-  
-      {/* SERVICES PREVIEW */}
-      <section className="px-10 pb-20">
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      {/* CTA */}
+      <section className="px-10 pb-32">
 
-          <div className="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold mb-4">
-              GIS & Mapping
-            </h2>
+        <div className="max-w-7xl mx-auto">
 
-            <p className="text-slate-400">
-              Spatial analysis, geodatabases,
-              web mapping, remote sensing,
-              and enterprise GIS systems.
-            </p>
-          </div>
+          <AnimatedContainer>
 
-          <div className="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold mb-4">
-              Urban Planning
-            </h2>
+            <GlassCard className="text-center">
 
-            <p className="text-slate-400">
-              Master plans, regional planning,
-              transport systems,
-              land use planning,
-              and development control.
-            </p>
-          </div>
+              <h2 className="text-5xl font-extrabold">
 
-          <div className="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold mb-4">
-              Smart City Systems
-            </h2>
+                Ready to Build Smarter Cities?
 
-            <p className="text-slate-400">
-              Intelligent infrastructure,
-              urban analytics,
-              planning dashboards,
-              and spatial decision systems.
-            </p>
-          </div>
+              </h2>
+
+              <p className="text-slate-400 text-xl mt-8 max-w-3xl mx-auto">
+
+                Let’s create intelligent urban systems
+                powered by GIS,
+                analytics,
+                enterprise infrastructure,
+                and smart-city innovation.
+
+              </p>
+
+              <Link to="/contact">
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="mt-12 inline-block"
+                >
+
+                  <PrimaryButton>
+
+                    Contact Us
+                    <ArrowRight className="inline ml-3" />
+
+                  </PrimaryButton>
+
+                </motion.div>
+
+              </Link>
+
+            </GlassCard>
+
+          </AnimatedContainer>
 
         </div>
 
       </section>
 
-      <Footer />
-
-    </div>
+    </PageLayout>
 
   );
 
